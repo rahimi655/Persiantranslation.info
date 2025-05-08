@@ -1,0 +1,874 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Professional Farsi/Dari Interpretation & Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        :root {
+            --navy: #001f3f;
+            --gold: #d4af37;
+            --light-gold: #f5e8c0;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 31, 63, 0.8), rgba(0, 31, 63, 0.8)), url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: var(--gold);
+            color: var(--navy);
+            font-size: 40px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            padding: 30px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+        }
+        
+        /* Services Page Specific */
+        .services-page {
+            padding: 120px 0 80px;
+        }
+        
+        .services-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .service-half {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-half h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gold);
+        }
+        
+        .service-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .service-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .service-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Login Pages */
+        .login-page {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--light-gray);
+            padding-top: 100px;
+        }
+        
+        .login-container {
+            background-color: var(--white);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .forgot-password {
+            color: var(--navy);
+            text-decoration: none;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .login-security {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @@media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .services-split {
+                flex-direction: column;
+            }
+        }
+        
+        /* Page-specific styles */
+        #home-page .hero {
+            display: block;
+        }
+        
+        #services-page .hero,
+        #client-login-page .hero,
+        #admin-login-page .hero,
+        #interpreter-login-page .hero {
+            display: none;
+        }
+        
+        #services-page .services-page,
+        #client-login-page .login-page,
+        #admin-login-page .login-page,
+        #interpreter-login-page .login-page {
+            display: block;
+        }
+        
+        /* Initially hide all pages except home */
+        #services-page,
+        #client-login-page,
+        #admin-login-page,
+        #interpreter-login-page {
+            display: none;
+        }
+
+        /* Industry tags */
+        .industry-tag {
+            display: inline-block;
+            background-color: var(--light-gold);
+            color: var(--navy);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo" onclick="showPage('home-page')">Persian <span>Translate & Thrive</span></a>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#" onclick="showPage('home-page')">Home</a></li>
+                    <li><a href="#" onclick="showPage('services-page')">Services</a></li>
+                    <li><a href="#" onclick="showPage('client-login-page')">Client Portal</a></li>
+                    <li><a href="#" onclick="showPage('interpreter-login-page')">Interpreter Portal</a></li>
+                    <li><a href="#" onclick="showPage('admin-login-page')">Admin Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Bridging Cultures Through Language</h1>
+                <p>Professional Farsi/Dari interpretation and translation services connecting Persian and English speakers with accuracy and cultural sensitivity.</p>
+                <a href="#" class="btn" onclick="showPage('services-page')">Our Services</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Our Services</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Persian Translate & Thrive provides professional Farsi/Dari interpretation and translation services. We specialize in Over-the-Phone Interpretation (OPI), Video Remote Interpretation (VRI), and document translation between English and Persian languages.</p>
+                        <p>Our team consists of native-speaking linguists with expertise in medical, legal, business, and technical terminology. We serve healthcare providers, legal professionals, businesses, and individuals who need accurate communication across these languages.</p>
+                        <p>With certifications in specialized fields and a deep understanding of cultural nuances, we ensure your messages maintain their intended meaning while respecting cultural contexts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Document Translation</h3>
+                            <p>Certified translations of legal documents, medical records, business contracts, personal documents, and more between English and Persian (Farsi/Dari).</p>
+                            <a href="#" class="btn" onclick="showPage('services-page')">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>OPI Services</h3>
+                            <p>Over-the-Phone Interpretation available 24/7 for immediate communication needs in healthcare, business, government, and personal situations.</p>
+                            <a href="#" class="btn" onclick="showPage('services-page')">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>VRI Services</h3>
+                            <p>Video Remote Interpretation for situations where visual context is important, with HIPAA-compliant platforms for medical and legal settings.</p>
+                            <a href="#" class="btn" onclick="showPage('services-page')">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Clients Say</h2>
+                </div>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The translation of our legal documents was flawless and delivered ahead of schedule. Persian Translate & Thrive understood exactly what we needed for our international case."</p>
+                        <p class="testimonial-author">- Sarah Johnson, Attorney at Law</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services-page">
+        <section class="services-page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Professional Services</h2>
+                    <p>High-quality language solutions tailored to your specific needs</p>
+                </div>
+                
+                <div class="services-split">
+                    <div class="service-half">
+                        <h3><i class="fas fa-file-contract"></i> Document Translation</h3>
+                        <p>We provide certified and notarized translations for all types of documents with guaranteed accuracy and confidentiality.</p>
+                        
+                        <h4>Document Types We Translate:</h4>
+                        <ul class="service-list">
+                            <li>Legal Documents (contracts, court papers, affidavits)</li>
+                            <li>Medical Records (reports, prescriptions, clinical trials)</li>
+                            <li>Business Materials (presentations, marketing content)</li>
+                            <li>Personal Documents (birth certificates, marriage licenses)</li>
+                            <li>Academic Transcripts and Diplomas</li>
+                            <li>Technical Manuals and Patents</li>
+                        </ul>
+                        
+                        <h4>Our Process:</h4>
+                        <ol>
+                            <li>Submit your documents through our secure portal</li>
+                            <li>Receive a free quote and timeline</li>
+                            <li>Our certified translators work on your project</li>
+                            <li>Quality assurance by second linguist</li>
+                            <li>Delivery of final translated documents</li>
+                        </ol>
+                        
+                        <a href="mailto:sales@persiantranslation.info" class="btn">Request Document Translation</a>
+                    </div>
+                    
+                    <div class="service-half">
+                        <h3><i class="fas fa-headset"></i> OPI & VRI Services</h3>
+                        <p>Immediate interpretation services available 24/7 for time-sensitive communication needs.</p>
+                        
+                        <h4>Over-the-Phone Interpretation (OPI):</h4>
+                        <ul class="service-list">
+                            <li>Available within minutes of request</li>
+                            <li>Average connect time under 30 seconds</li>
+                            <li>Specialized interpreters for medical/legal needs</li>
+                            <li>Conference call capabilities</li>
+                            <li>Detailed usage reports available</li>
+                        </ul>
+                        
+                        <h4>Video Remote Interpretation (VRI):</h4>
+                        <ul class="service-list">
+                            <li>Face-to-face interpretation without travel</li>
+                            <li>HIPAA-compliant platforms</li>
+                            <li>Ideal for medical consultations and legal proceedings</li>
+                            <li>High-definition video and audio</li>
+                        </ul>
+                        
+                        <h4>Industries We Serve:</h4>
+                        <div class="industries-grid">
+                            <span class="industry-tag">Healthcare</span>
+                            <span class="industry-tag">Legal</span>
+                            <span class="industry-tag">Government</span>
+                            <span class="industry-tag">Financial</span>
+                            <span class="industry-tag">Education</span>
+                            <span class="industry-tag">Social Services</span>
+                        </div>
+                        
+                        <a href="tel:+14142008686" class="btn">Call Now: (414) 200-8686</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Client Login Page -->
+    <div id="client-login-page">
+        <section class="login-page">
+            <div class="login-container">
+                <h2>Client Portal</h2>
+                <form asp-controller="Account" asp-action="Login" asp-route-role="Client" method="post">
+                    <div class="form-group">
+                        <label for="client-username">Username or Email</label>
+                        <input type="text" id="client-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-password">Password</label>
+                        <input type="password" id="client-password" name="password" required>
+                    </div>
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-client" name="rememberMe">
+                            <label for="remember-client">Remember me</label>
+                        </div>
+                        <a href="mailto:sales@persiantranslation.info" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Login</button>
+                </form>
+                <div class="login-security">
+                    <p><i class="fas fa-lock"></i> Secure client portal</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Interpreter Login Page -->
+    <div id="interpreter-login-page">
+        <section class="login-page">
+            <div class="login-container">
+                <h2>Interpreter Portal</h2>
+                <form asp-controller="Account" asp-action="Login" asp-route-role="Interpreter" method="post">
+                    <div class="form-group">
+                        <label for="interpreter-username">Interpreter ID</label>
+                        <input type="text" id="interpreter-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interpreter-password">Password</label>
+                        <input type="password" id="interpreter-password" name="password" required>
+                    </div>
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-interpreter" name="rememberMe">
+                            <label for="remember-interpreter">Remember me</label>
+                        </div>
+                        <a href="mailto:support@persiantranslation.info" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Login</button>
+                </form>
+                <div class="login-security">
+                    <p><i class="fas fa-user-shield"></i> Secure interpreter portal</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Admin Login Page -->
+    <div id="admin-login-page">
+        <section class="login-page">
+            <div class="login-container">
+                <h2>Admin Login</h2>
+                <form asp-controller="Account" asp-action="Login" asp-route-role="Admin" method="post">
+                    <div class="form-group">
+                        <label for="admin-username">Username</label>
+                        <input type="text" id="admin-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Password</label>
+                        <input type="password" id="admin-password" name="password" required>
+                    </div>
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-admin" name="rememberMe">
+                            <label for="remember-admin">Remember me</label>
+                        </div>
+                        <a href="mailto:support@persiantranslation.info" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Login</button>
+                </form>
+                <div class="login-security">
+                    <p><i class="fas fa-shield-alt"></i> Secure administrator portal</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Persian Translate & Thrive</h3>
+                    <p>Professional Farsi/Dari interpretation and translation services bridging communication gaps with accuracy and cultural sensitivity.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#" onclick="showPage('services-page')">Services</a></li>
+                        <li><a href="#" onclick="showPage('client-login-page')">Client Portal</a></li>
+                        <li><a href="#" onclick="showPage('interpreter-login-page')">Interpreter Portal</a></li>
+                        <li><a href="#" onclick="showPage('admin-login-page')">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#" onclick="showPage('services-page')">Document Translation</a></li>
+                        <li><a href="#" onclick="showPage('services-page')">OPI Services</a></li>
+                        <li><a href="#" onclick="showPage('services-page')">VRI Services</a></li>
+                        <li><a href="#" onclick="showPage('services-page')">Certified Translations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+14142008686">+1 (414) 200-8686</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:sales@persiantranslation.info">sales@persiantranslation.info</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Richmond, TX</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://persiantranslation.info" target="_blank">persiantranslation.info</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Persian Translate & Thrive. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('div[id$="-page"]').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Close mobile menu if open
+            document.getElementById('nav-menu').classList.remove('show');
+            
+            return false;
+        }
+        
+        // Toggle mobile menu
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        }
+        
+        // Show home page by default when page loads
+        window.onload = function() {
+            showPage('home-page');
+        };
+    </script>
+</body>
+</html>
